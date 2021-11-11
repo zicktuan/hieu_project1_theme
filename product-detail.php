@@ -26,30 +26,24 @@
                     <div class="new">new</div>
                 </div>
                 <div class="owl-carousel img-carousel">
-                    <div class="item">
-                        <a class="btn btn-theme btn-theme-transparent btn-zoom" href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" data-gal="prettyPhoto"><i class="fa fa-plus"></i></a>
-                        <a href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>" data-gal="prettyPhoto">
-                            <img class="img-responsive" src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" alt=""/>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a class="btn btn-theme btn-theme-transparent btn-zoom" href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" data-gal="prettyPhoto"><i class="fa fa-plus"></i></a>
-                        <a href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" data-gal="prettyPhoto">
-                            <img class="img-responsive" src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" alt=""/>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a class="btn btn-theme btn-theme-transparent btn-zoom" href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" data-gal="prettyPhoto"><i class="fa fa-plus"></i></a>
-                        <a href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" data-gal="prettyPhoto">
-                            <img class="img-responsive" src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" alt=""/>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a class="btn btn-theme btn-theme-transparent btn-zoom" href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" data-gal="prettyPhoto"><i class="fa fa-plus"></i></a>
-                        <a href="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" data-gal="prettyPhoto">
-                            <img class="img-responsive" src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'gmo-thumbnail-555x652' ); ?>" alt=""/>
-                        </a>
-                    </div>
+                    <?php $i = 0; foreach ($argsGallery as $value): $i++ ?>
+                        <?php 
+                            $imageId = get_post($value);
+                            // print_r($imageId);
+                            $image   = wp_get_attachment_image_src($value, 'bookawesome-thumbnail-141x75');
+                            $argsCaption = [
+                                'title'       => isset( $imageId->post_excerpt ) ? $imageId->post_excerpt : '',
+                            ];
+                        ?>
+                        <div class="item">
+                            <a class="btn btn-theme btn-theme-transparent btn-zoom" href="<?php echo esc_attr($image[0]); ?>" data-gal="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            <a href="<?php echo esc_attr($image[0]); ?>" data-gal="prettyPhoto">
+                                <img class="img-responsive" src="<?php echo esc_attr($image[0]); ?>" alt="<?php echo !empty($imageId->post_title) ? esc_attr($imageId->post_title) : ''; ?>"/>
+                            </a>
+                        </div>
+                        
+                        
+                    <?php endforeach ?>
                 </div>
                 <div class="row product-thumbnails">
                     <?php $i = 0; foreach ($argsGallery as $value): $i++ ?>
