@@ -49,6 +49,8 @@ class AfterSetupTheme{
 				// 'ssd-footer-menu' => __( 'Footer Menu', 'bookawesome' )
 			)
 		);
+
+		$this->registerSizeImg();
 	}
 
     function wpse156165_menu_add_class( $atts, $item, $args ) {
@@ -60,8 +62,8 @@ class AfterSetupTheme{
 
 	public function registerSizeImg()
 	{
-		add_image_size( 'gmo-thumbnail-165x262', 165, 262, true );
-		add_image_size( 'gmo-thumbnail-170x120', 170, 120, true );
+		add_image_size( 'gmo-thumbnail-165x262', 165, 262, array( 'center', 'center' ) );
+		add_image_size( 'gmo-thumbnail-170x120', 170, 120, array( 'center', 'center' ) );
 		add_image_size( 'gmo-thumbnail-262x360', 262, 360, true );
 		add_image_size( 'gmo-thumbnail-555x652', 555, 652, true );
 		add_image_size( 'gmo-thumbnail-263x360', 263, 360, true );

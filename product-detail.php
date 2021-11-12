@@ -49,7 +49,6 @@
                     <?php $i = 0; foreach ($argsGallery as $value): $i++ ?>
                         <?php 
                             $imageId = get_post($value);
-                            // print_r($imageId);
                             $image   = wp_get_attachment_image_src($value, 'bookawesome-thumbnail-141x75');
                             $argsCaption = [
                                 'title'       => isset( $imageId->post_excerpt ) ? $imageId->post_excerpt : '',
@@ -68,9 +67,14 @@
                 <h2 class="product-title"><?php the_title() ?></h2>
                 
                 <hr class="page-divider small"/>
-
-                <div class="product-price"><?php echo number_format($discount, 0, '', ',') . 'VNĐ'; ?></div>
-                <div class="price"><del><?php echo number_format($price, 0, '', ',') . 'VNĐ'; ?></del></div>
+                
+                <?php if(empty($discount)):?>
+                    <div class="product-price"><?php echo number_format($price, 0, '', ',') . 'VNĐ'; ?></div>
+                <?php else: ?>
+                    <div class="product-price"><?php echo number_format($discount, 0, '', ',') . 'VNĐ'; ?></div>
+                    <div class="price"><del><?php echo number_format($price, 0, '', ',') . 'VNĐ'; ?></del></div>
+                <?php endif ?>
+                
                 <hr class="page-divider"/>
 
                 <?php if(!empty($post->post_excerpt)):?>
@@ -141,8 +145,8 @@
         <div class="featured-products-carousel">
             <div class="owl-carousel" id="featured-products-carousel">
                 <?php foreach($relatedPosts as $relateItem):
-                    $price = get_post_meta($relateItem->ID, 'gmo_product_price', true);
-                    $discount = get_post_meta($relateItem->ID, 'gmo_product_price_discount', true);
+                    $price2 = get_post_meta($relateItem->ID, 'gmo_product_price', true);
+                    $discount2 = get_post_meta($relateItem->ID, 'gmo_product_price_discount', true);
                 ?>
                 <div class="thumbnail no-border no-padding">
                     <div class="media">
@@ -157,8 +161,12 @@
                         <h4 class="caption-title"><?php echo !empty($relateItem->post_title) ?$relateItem->post_title : '' ?></h4>
                         
                         <div class="price">
-                            <ins><?php echo number_format($discount, 0, '', ',') . 'VNĐ'; ?></ins> 
-                            <del><?php echo number_format($price, 0, '', ',') . 'VNĐ'; ?></del>
+                            <?php if(empty($discount2)):?>
+                            <ins><?php echo number_format($price2, 0, '', ',') . 'VNĐ'; ?></ins> 
+                            <?php else:?>
+                            <ins><?php echo number_format($discount2, 0, '', ',') . 'VNĐ'; ?></ins> 
+                            <del><?php echo number_format($price2, 0, '', ',') . 'VNĐ'; ?></del>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>

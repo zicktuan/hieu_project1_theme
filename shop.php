@@ -104,8 +104,12 @@
                                         <?php echo $product->post_title ?>
                                     </h4>
                                     <div class="price">
+                                        <?php if(empty($discount)):?>
+                                        <ins><?php echo number_format($price, 0, '', ',') . 'VNĐ'; ?></ins> 
+                                        <?php else:?>
                                         <ins><?php echo number_format($discount, 0, '', ',') . 'VNĐ'; ?></ins> 
                                         <del><?php echo number_format($price, 0, '', ',') . 'VNĐ'; ?></del>
+                                        <?php endif ?>
                                     </div>
                                 </div>
                             </div>

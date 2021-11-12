@@ -42,6 +42,31 @@ $optionTheme  = $GMOPlugin->themeSetting->getSettings();
 
 <!-- WRAPPER -->
 <div class="wrapper">
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <ul class="list-inline">
+                    <li><a href="mailto:support@yourdomain.com"><i class="fa fa-envelope"></i> <span><?php echo !empty($optionTheme['gmo_header_email']) ? $optionTheme['gmo_header_email'] : '' ?></span></a></li>
+                    <li><a href="mailto:support@yourdomain.com"><i class="fa fa-phone"></i> <span><?php echo !empty($optionTheme['gmo_header_phone']) ? $optionTheme['gmo_header_phone'] : '' ?></span></a></li>
+                </ul>
+            </div>
+            <?php if(!empty($optionTheme['gmo_job_social'])):?>
+            <div class="top-bar-right">
+                <ul class="list-inline">
+                    <?php foreach($optionTheme['gmo_job_social'] as $itemIcon): ?>
+                    <li class="hidden-xs">
+                        <a href="<?php echo !empty($itemIcon['url']) ? $itemIcon['url'] : '' ?>">
+                            <?php echo !empty($itemIcon['icon']) ? $itemIcon['icon'] : '' ?>
+                        </a>
+                    </li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+            <?php endif ?>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header class="header">
         <div class="header-wrapper">
