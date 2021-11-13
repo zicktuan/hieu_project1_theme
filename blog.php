@@ -12,7 +12,7 @@
 			<p>Fusce gravida interdum eros a mollis. Sed non lorem varius, volutpat nisl in, laoreet ante. Quisque suscipit mauris ipsum, eu mollis arcu laoreet vel. In posuere odio sed libero tincidunt commodo a vel ipsum. Mauris fringilla tellus aliquam, egestas sem in, malesuada nunc. Etiam condimentum felis odio, vel mollis est tempor non...</p>
 		</div>
 	</div>
-	<div class="post-footer">
+	<div class="post-footer"> 
 		<span class="post-read-more"><a href="#" class="btn btn-theme btn-theme-transparent btn-icon-left"><i class="fa fa-file-text-o"></i>Read more</a></span>
 	</div>
 </article>
